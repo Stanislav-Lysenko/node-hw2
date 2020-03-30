@@ -1,0 +1,25 @@
+{{#if user}}
+<div>User exist id={{user.id}}</div>
+<div>You have {{tasks.length}} tasks</div>
+<form method="POST" action="/api/addnote">
+    <input type="text" name="addNote" value="" placeholder="Add you note">
+    <input type="submit" value="Add Note">
+</form>
+<div>user notes:</div>
+{{/if}}
+
+{{#if tasks.length}}
+<ul>
+    {{#each tasks}}
+
+    <li>
+        <input type="checkbox" actionform="/api/checknote" name="check" value="task{{@index}}"
+            {{#if this.check}}checked{{/if}} onclick="checkNote(event, {{../user.id}}, {{@index}})">
+        <input type="text" actionform="/api/aditnote" name="edit" value="{{this.text}}"
+            onchange="saveNote(event, {{../user.id}}, {{@index}})">
+        <button type="button" name="remove" value="task{{@index}}"
+            onclick="removeNote(event, {{../user.id}}, {{@index}})">Remove</button>
+    </li>
+    {{/each}}
+</ul>
+{{/if}}

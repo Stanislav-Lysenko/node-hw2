@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Notes</title>
+    <meta charset="utf-8">
+    <script src="/main.js"></script>
+</head>
+<body>
+    <!-- throw the context from body by word 'this' -->
+    {{> nav user=this.user}}
+
+    {{{body}}}
+
+    {{> footer}}
+</body>
+<html>
